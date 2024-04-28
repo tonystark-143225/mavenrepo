@@ -2,9 +2,11 @@
 FROM bitnami/git AS git
 WORKDIR /build
 RUN git clone https://github.com/vamsiharikanth/mavenrepo.git
+RUN ls
+
 
 FROM maven:3.8.4-openjdk-17 AS maven_build
-COPY --from=git /build /build
+COPY --from=git /build/* /build
 WORKDIR /build
 # Build the WAR file
 RUN mvn clean package dependency:copy-dependencies

@@ -1,9 +1,9 @@
 # Stage 1: Build the WAR file using Maven
 FROM maven:3.8.4-openjdk-17 AS maven_build
-WORKDIR /build
-COPY /harness/pom.xml .
+#WORKDIR /build
+#COPY /harness/pom.xml .
 # Copying the source code before executing 'mvn package' to utilize Docker layer caching
-COPY src ./src
+#COPY src ./src
 # Build the WAR file
 RUN mvn clean package dependency:copy-dependencies
 

@@ -4,7 +4,7 @@ WORKDIR /build
 # Install Git
 RUN apt-get update && apt-get install -y git
 # Clone the Git repository
-RUN git clone <repository_url> .
+RUN git clone https://github.com/vamsiharikanth/mavenrepo.git
 # Copy the source code before executing 'mvn package' to utilize Docker layer caching
 COPY src ./src
 COPY pom.xml .
@@ -16,6 +16,6 @@ FROM tomcat:latest
 # Remove the default ROOT web application
 RUN rm -rf /usr/local/tomcat/webapps/ROOT
 # Copy the WAR file built in the previous stage to Tomcat's webapps directory
-COPY --from=maven_build /harness/target/*.war /usr/local/tomcat/webapps/ROOT.war
+COPY --from=maven_build /build/target/*.war /usr/local/tomcat/webapps/ROOT.war
 # Optionally, you can expose the default Tomcat port (8080)
 EXPOSE 8080

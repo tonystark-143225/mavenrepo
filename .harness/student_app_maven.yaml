@@ -1,0 +1,37 @@
+pipeline:
+  name: student_app_maven
+  identifier: student_app_maven
+  projectIdentifier: maven_build
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: maven_student_app
+        repoName: mavenrepo
+        build: <+input>
+  stages:
+    - stage:
+        name: studentapp
+        identifier: studentapp
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: maven_build
+                  identifier: maven_build
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: maven:3.8-jdk-11
+                    shell: Sh
+                    command: mvn clean package dependency:copy-dependencies

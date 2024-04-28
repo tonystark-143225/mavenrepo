@@ -44,7 +44,7 @@ pipeline:
                   identifier: BuildAndPushDockerRegistry_1
                   spec:
                     connectorRef: tonystark143225
-                    repo: newtest
+                    repo: vamsiharikanth/newtest
                     tags:
-                      - "1.0"
+                      - "29.04"
                     dockerfile: dockerfile1

@@ -36,6 +36,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       pwd
+                      ls -lart
                       mvn clean package dependency:copy-dependencies
               - step:
                   type: BuildAndPushDockerRegistry

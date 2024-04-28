@@ -31,7 +31,7 @@ pipeline:
                   name: maven_build
                   identifier: maven_build
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: tonystark143225
                     image: maven:3.8-jdk-11
                     shell: Sh
                     command: |-
@@ -46,4 +46,4 @@ pipeline:
                     repo: newtest
                     tags:
                       - "1.0"
-                    dockerfile: Dockerfile
+                    dockerfile: dockerfile1

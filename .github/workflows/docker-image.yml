@@ -13,8 +13,8 @@ on:
   #   DAY_OF_WEEK: Thursday
     
   workflow_dispatch:
-  schedule:
-    - cron: '*/5 * * * *'
+  # schedule:
+  #   - cron: '*/5 * * * *'
   
 jobs:
 

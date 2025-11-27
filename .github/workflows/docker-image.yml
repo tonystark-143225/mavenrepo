@@ -8,16 +8,25 @@ on:
     branches: [ "master" ]
   issues:
     types: [opened, closed]
+
+  env: 
+    DAY_OF_WEEK: Thursday
     
   workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *'
   
 jobs:
 
   build:
 
     runs-on: ubuntu-latest
+    strategy: 
+      matrix: # for parallel jobs
+       os: [ubuntu-latest, windows-latest]
 
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    

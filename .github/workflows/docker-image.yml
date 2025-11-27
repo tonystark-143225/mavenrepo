@@ -9,8 +9,8 @@ on:
   issues:
     types: [opened, closed]
 
-  env: 
-    DAY_OF_WEEK: Thursday
+  # env: 
+  #   DAY_OF_WEEK: Thursday
     
   workflow_dispatch:
   schedule:
